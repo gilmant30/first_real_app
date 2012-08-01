@@ -3,18 +3,15 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.6'
 gem 'mongoid', '~> 3.0.0'
-gem 'pivotal-tracker'
-gem 'fullcalendar-rails'
-gem 'holidays', '~> 1.0.5'
-gem 'business_time', '0.6.1'
 gem 'bson', '1.3.1'
 gem 'bson_ext', '1.3.1'
 gem "devise", "~> 2.1.2"
+gem "jasmine", "~> 1.2.0"
+gem 'jasmine-jquery-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
-  gem 'stale_fish', '~> 1.3.2'
   gem 'rake'
   gem 'jeweler'
   gem 'autotest'

@@ -1,0 +1,12 @@
+<style type="text/css">
+h1{
+	text-align: center;
+}
+</style>
+
+<h1>Tim's game application</h1>
+
+<p>Users playing game</p>
+<% User.all.each do |user| %>
+	<%= link_to user.name, user %>
+<% end %>
