@@ -1,0 +1,31 @@
+<div id='wrapper'>
+
+<% @user.game_number = 2 %>
+
+<h1>Game 2</h1>
+
+<div id='num1'></div>
+<div> + </div>
+<div id='num2'></div>
+<div> = </div>
+</br>
+<input type="text" name="answer" id="answer"/>
+</br>
+<input type="submit" value="add number" onclick="adding();" />
+</br>
+<input type="submit" id="brestart" value="restart" onclick="restart();" />
+
+<div id='restart'></div>
+
+<div id='countdown'></div>
+
+<%= link_to "Game 3", { :action => 'game3' }, :remote => true, :id => 'game_3' %>
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#game_3").hide();
+});
+</script>

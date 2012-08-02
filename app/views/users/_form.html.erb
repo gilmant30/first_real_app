@@ -1,7 +1,12 @@
+<div id='wrapper'>
+
 <%= form_for(@user, :remote => true) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name %>
 </br>
+</br>
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 <% end %>
+
+</div>

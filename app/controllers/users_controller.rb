@@ -1,26 +1,28 @@
 class UsersController < ApplicationController
   def index
-  	
+  	@user = User.all	
   end
 
   def show
   	@user = User.find(params[:id])
+    f = rand(100)
+    @user.guess = f
 
   	respond_to do |format|
       format.html 
-      format.js 
     end
   end
 
   def new
   	@user = User.new
+
+    respond_to do |format|
+      format.js { render :layout=>false }
+    end
   end
 
   def create
   	  @user = User.new(params[:user])  
-
-  	  f = rand(100)
-  	  @user.guess = f
   	  @user.game_number = 1
   
     respond_to do |format|  
@@ -33,5 +35,17 @@ class UsersController < ApplicationController
       end  
     end  
   end
-  
+
+  def game2
+    respond_to do | format |  
+        format.js { render :layout => false }  
+    end
+  end
+
+  def game3
+    respond_to do | format |  
+        format.js {render :layout => false}  
+    end
+  end
+
 end

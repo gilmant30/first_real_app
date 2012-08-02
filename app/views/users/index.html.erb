@@ -6,7 +6,22 @@ h1{
 
 <h1>Tim's game application</h1>
 
-<p>Users playing game</p>
-<% User.all.each do |user| %>
+<%= link_to "Home", { :action => "index" } %>
+
+
+<div id='wrapper'>
+
+<div id='new'>
+<%= link_to "Create New User", { :action => 'new' }, :remote => true %>
+</div>
+
+</br>
+
+<p>Users playing game:</p>
+<% @user.each do |user| %>
 	<%= link_to user.name, user %>
 <% end %>
+</div>
+
+
+

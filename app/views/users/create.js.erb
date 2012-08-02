@@ -1,1 +1,1 @@
-$('body').html("<h1><%= escape_javascript(@user.name) %></h1>").append("<%= @user.guess %>");
+$('#wrapper').html("<p><%= escape_javascript('hello ' + @user.name) %></p>").append("Welcome to your first challenge, click the link below to begin </br> <%= escape_javascript( link_to 'Game 1', @user ) %>");                 

@@ -1,1 +1,15 @@
+<h1>Welcome <%= @user.name %></h1>
+
+<div id='wrapper'>
+
+<% if(@user.game_number == 1) %>
+
 <%= render 'game1' %>
+
+<% elsif(@user.game_number == 2) %>
+
+<%= render 'game2' %>
+
+<% end %>
+
+</div>
