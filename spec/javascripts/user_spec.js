@@ -1,5 +1,3 @@
-
-
 describe("game 1", function() { 
 	beforeEach(function() {
   		loadFixtures("game1.html");
@@ -235,13 +233,47 @@ describe("game 2", function() {
 
 	describe("after guessing once", function() {
 
-		it("and value doesn't equal the sum of both put wrong in div with id result", function(){
-			$("#num1").html("1");
-			$("#num2").html("2");
+		it("and value doesn't equal the sum of both, put wrong in div with id result", function(){
+			$("#num1").html("131");
+			$("#num2").html("22");
 			$("#answer").val("3");
 			adding();
 			expect($("#result")).toHaveText("Wrong...try again...");
 		});
+	});
+
+	describe("after time runs out", function() {
+
+		it("should have countdown with text you took to long, press restart button to try again", function() {
+			theCountdown(0);
+
+			waits(1100);
+
+			runs(function() { 
+				expect($("#countdown")).toHaveText("you took to long, press restart button to try again");
+			});
+		});
+
+		it("should have add button be hidden", function() {
+			theCountdown(0);
+
+			waits(1100);
+
+			runs(function() { 
+				expect($("#add")).toBeHidden();
+			});
+		});
+
+		it("should have add button be hidden", function() {
+			theCountdown(0);
+
+			waits(1100);
+
+			runs(function() { 
+				expect($("#brestart")).toBeVisible();
+			});
+		});
+
 	});
 
 	describe("after guessing right", function() {
@@ -253,7 +285,36 @@ describe("game 2", function() {
 			adding();
 			expect($("#result")).toHaveText("correct!");
 		});
+
+		it("should have countdown have text proceed to game 3", function() {
+			$("#num1").html("150");
+			$("#num2").html("235");
+			$("#answer").val("385");
+			adding();
+			expect($("#countdown")).toHaveText("proceed to game 3");
+		});
+
+		it("should have link to game 3 showing", function() {
+			$("#num1").html("150");
+			$("#num2").html("235");
+			$("#answer").val("385");
+			adding();
+			expect($("#game_3")).toBeVisible();
+		});
 	});
 
+});
+
+describe("game 3", function() {
+	beforeEach(function() {
+  		loadFixtures("game3.html");
+	});
+
+	describe("on initial load", function() {
+
+		it("should have a head with text game 3", function() {
+			expect($("h1")).toHaveText("game 3");
+		});
+	});
 
 });

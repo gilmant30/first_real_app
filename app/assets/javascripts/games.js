@@ -60,14 +60,19 @@ function game2begin(){
 
 
 function adding(){
-	var num1 = document.getElementById("num1").value;
-	var num2 = document.getElementById("num2").value;
+	var num1 = document.getElementById("num1");
+	var num2 = document.getElementById("num2");
 	var answer = document.getElementById("answer").value;
-
+	num1 = parseInt(num1.innerHTML);
+	num2 = parseInt(num2.innerHTML);
 	var total = num1 + num2;
+
 	if(answer == total)
 	{
 		$("#result").html("correct!");
+		clearInterval(time);
+		$("#countdown").html("proceed to game 3");
+		$("#game_3").show();
 	}
 	else
 	{
@@ -79,7 +84,7 @@ function adding(){
 function theCountdown(s_time){
 	$("#countdown").html(s_time);
 
-	setTimeout(function() {
+	time = setTimeout(function() {
 		if(s_time > 0)
 		{
 			s_time = s_time - 1;
@@ -88,6 +93,7 @@ function theCountdown(s_time){
 		else
 		{
 			$("#countdown").html("you took to long, press restart button to try again");
+			$("#add").hide();
 			$("#brestart").show();
 
 		}
@@ -116,5 +122,6 @@ function restart(){
 	$("#answer").val("");
 	$("#result").html("");
 	$("#brestart").hide();
+	$("#add").show();
 }
 
