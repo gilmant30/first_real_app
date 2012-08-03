@@ -44,11 +44,12 @@ describe("game 1", function() {
 		});
 
 		it("should have result saying please enter a correct integer and count saying 0 guesses", function() {
+			game1begin();
 			$("#number").val("-10");
 			guessNumber(30);
 			expect($("#result")).toHaveText("please enter a correct integer");
 			expect($("#count")).toHaveText("0 guesses");
-			expect($("#game_2")).toBeHidden()
+			expect($("#game_2")).toBeHidden();
 		})
 	});
 
@@ -138,6 +139,7 @@ describe("game 1", function() {
 		});
 
 		it("should have result saying correct and count saying you did it in less than 6 guesses congratulations you move on to level two!", function() {
+			game1begin();
 			$("#number").val("30");
 			guessNumber(30);
 			expect($("#result")).toHaveText("correct!");
@@ -154,12 +156,16 @@ describe("game 1", function() {
 		});
 
 		it("should have result saying correct and count saying try again, get under 6 guesses to move on", function() {
+			game1begin();
 			$("#number").val("30");
 			guessNumber(30);
 			expect($("#result")).toHaveText("correct!");
 			expect($("#count")).toHaveText("try again, get under 6 guesses to move on");
+			expect($("#game_2")).toBeHidden();
+			expect($("#retry")).toBeVisible();
 		});
 	});
+
 });
 
 describe("game 2", function() {
@@ -182,11 +188,6 @@ describe("game 2", function() {
 			expect($("#answer")).toHaveText("");
 		});
 
-		it("should have div with id restart and be initially empty", function() {
-			expect($("#restart")).toBe('div');
-			expect($("#restart")).toHaveText("");
-		});	
-
 		it("should have div with id countdown and be initially empty", function() {
 			expect($("#countdown")).toBe('div');
 			expect($("#countdown")).toHaveText("");
@@ -200,25 +201,58 @@ describe("game 2", function() {
 	describe("after initial load", function() {
 
 		it("num1 and num2 should not be empty", function() {
-			restart();
+			game2begin();
 			expect($("#num1")).not.toHaveText("");
 			expect($("#num2")).not.toHaveText("");
 		});
 
+		it("should have submit button with id of brestart be hidden", function() {
+			game2begin();
+			expect($("#brestart")).toBeHidden();
+		});
+
+		it("should have a link with id of game_3 be hidden", function() {
+			game2begin();
+			expect($("#game_3")).toBeHidden();
+		});
+
 		it("should have id of countdown with 5", function() {
-			restart();
-			expect($("#countdown")).toHaveText("5");
-		});
-		/*
-		it("should have id of countdown with 4 after 1 seconds", function() {
-			restart();
-
-			waitFor(function() {
-				expect($("#countdown")).toHaveText("4");
-			}, "it didn't cycle through", 2000);
+			game2begin();
+			expect($("#countdown")).toHaveText("10");
 		});
 
-		*/
+		it("should have a number in div with id num1", function() {
+			game2begin();
+			expect($("#num1")).not.toHaveText("");
+		});
+
+		it("should have a number in div with id num2", function() {
+			game2begin();
+			expect($("#num2")).not.toHaveText("");
+		});
+	
+	});
+
+	describe("after guessing once", function() {
+
+		it("and value doesn't equal the sum of both put wrong in div with id result", function(){
+			$("#num1").html("1");
+			$("#num2").html("2");
+			$("#answer").val("3");
+			adding();
+			expect($("#result")).toHaveText("Wrong...try again...");
+		});
+	});
+
+	describe("after guessing right", function() {
+
+		it("div with id result should say correct!", function() {
+			$("#num1").html("150");
+			$("#num2").html("235");
+			$("#answer").val("385");
+			adding();
+			expect($("#result")).toHaveText("correct!");
+		});
 	});
 
 

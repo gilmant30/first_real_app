@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   	respond_to do |format|
       format.html 
+      format.js
     end
   end
 
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
 
   def game3
     respond_to do | format |  
-        format.js {render :layout => false}  
+        format.js { render :layout => false}  
     end
   end
 

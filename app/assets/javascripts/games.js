@@ -1,4 +1,10 @@
 var count = 0;
+
+function game1begin(){
+	$("#game_2").hide();
+    $("#retry").hide();
+}
+
 function guessNumber(against) {
 	var number = document.getElementById("number").value;
 
@@ -46,8 +52,27 @@ function guessNumber(against) {
 }
 
 
+function game2begin(){
+	restart();
+	$("#game_3").hide();
+}
+
+
+
 function adding(){
-	//add two numbers and see if you get the right answer
+	var num1 = document.getElementById("num1").value;
+	var num2 = document.getElementById("num2").value;
+	var answer = document.getElementById("answer").value;
+
+	var total = num1 + num2;
+	if(answer == total)
+	{
+		$("#result").html("correct!");
+	}
+	else
+	{
+		$("#result").html("Wrong...try again...");
+	}
 
 }
 
@@ -63,7 +88,7 @@ function theCountdown(s_time){
 		else
 		{
 			$("#countdown").html("you took to long, press restart button to try again");
-			$("#restart").show();
+			$("#brestart").show();
 
 		}
 	},1000);
@@ -73,12 +98,23 @@ function changeNumbers(){
 
 }
 
-function restart(){
+function randomNum1(){
 	var randomnumber = Math.floor(Math.random()*1000);
 	$("#num1").html(randomnumber);
+}
+
+function randomNum2(){
 	var randomnumber = Math.floor(Math.random()*1000);
 	$("#num2").html(randomnumber);
-	theCountdown(5);
-	$("#restart").hide();
+}
+
+
+function restart(){
+	randomNum1();
+	randomNum2();
+	theCountdown(10);
+	$("#answer").val("");
+	$("#result").html("");
+	$("#brestart").hide();
 }
 
