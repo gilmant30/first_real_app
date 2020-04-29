@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails', '3.2.6'
 gem 'mongoid', '~> 3.0.0'
-gem 'bson', '1.3.1'
+gem 'bson', '3.0.4'
 gem 'bson_ext', '1.3.1'
 gem "devise", "~> 2.1.2"
 gem "jasmine", "~> 1.2.0"
